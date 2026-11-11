@@ -1,0 +1,982 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Thảo Nhi Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<script>
+/* Motion is opt-in: only viewers who have not asked for reduced motion get the fx class. */
+(function(){try{var d=document.documentElement;if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('fx');setTimeout(function(){d.classList.add('go')},2200);}}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Unbounded:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout concept: prints pinned to a paper desk. Wide Unbounded wordmark, bracketed labels and stamp logos taken from the PDF.
+   Work is grouped by employer, shown as text beside a taped print, and can be filtered by the four .zip folders from the cover.
+   Single committed look (paper and cobalt ink), so every colour is set explicitly. */
+:root {
+  --paper: #EFEEEB;
+  --paper-lift: #FAF9F7;
+  --ink: #1E2236;
+  --muted: #4A4F66;
+  --cobalt: #2442A0;
+  --signal: #E85D3A;
+  --signal-text: #B33716;
+  --rule: #C6C8D3;
+  --font-display: 'Unbounded', 'Be Vietnam Pro', system-ui, sans-serif;
+  --font-body: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .25  0 0 0 0 .27  0 0 0 0 .35  0 0 0 .10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--cobalt); text-underline-offset: 3px; }
+a:hover { color: var(--signal-text); }
+:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
+h1, h2, h3, h4, p, ul, dl, dd, figure { margin: 0; padding: 0; }
+ul { list-style: none; }
+h1, h2, h3, h4 { text-wrap: balance; overflow-wrap: anywhere; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+@media (min-width: 720px) {
+  .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); }
+}
+
+/* Bracketed labels from the PDF */
+.label, .tags span, .chip, .zips a, .mark {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.label { color: var(--signal-text); }
+
+/* Top bar */
+.topbar { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; padding-block: 20px 0; position: relative; z-index: 3; }
+.mark { color: var(--cobalt); text-decoration: none; }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.topbar nav a { color: var(--cobalt); text-decoration: none; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+.topbar nav a:hover { color: var(--signal-text); text-decoration: underline; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding-block: clamp(36px, 7vw, 96px) clamp(48px, 8vw, 110px); }
+.hero .bow { position: absolute; mix-blend-mode: multiply; pointer-events: none; z-index: 0; }
+.bow-r { top: -2%; right: -3%; width: clamp(150px, 27vw, 380px); }
+.bow-l { bottom: -4%; left: -4%; width: clamp(130px, 25vw, 360px); }
+.spark { position: absolute; color: var(--cobalt); z-index: 1; }
+.spark.s1 { width: clamp(22px, 3.2vw, 44px); left: 17%; top: 22%; }
+.spark.s2 { width: clamp(30px, 4.4vw, 60px); right: 24%; bottom: 18%; }
+.hero-in { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 14px; }
+.year { font-family: var(--font-display); font-weight: 400; color: var(--cobalt); font-size: clamp(1.1rem, 2.6vw, 1.9rem); letter-spacing: 0.02em; }
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--cobalt);
+  text-transform: uppercase;
+  font-size: clamp(2rem, 10.2vw, 8rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  overflow-wrap: normal;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 40px; margin-top: 4px; }
+.hero-meta .br { color: var(--signal-text); font-weight: 500; font-size: 0.875rem; letter-spacing: 0.04em; }
+.zips { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 6px; color: var(--signal-text); font-size: 0.875rem; font-weight: 500; }
+.zips a { color: var(--signal-text); text-decoration: none; font-size: 0.875rem; letter-spacing: 0.02em; text-transform: none; }
+.zips a:hover { text-decoration: underline; }
+.hero-line { max-width: 34rem; margin-top: 18px; font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.5; color: var(--ink); text-wrap: pretty; }
+
+/* Section frame */
+section { padding-block: clamp(48px, 8vw, 104px) 0; }
+.sec-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: clamp(24px, 4vw, 48px); }
+.sec-head h2 { font-family: var(--font-display); font-weight: 400; color: var(--cobalt); font-size: clamp(1.6rem, 4.4vw, 3.2rem); line-height: 1.12; text-transform: uppercase; }
+.sec-head p { max-width: 40rem; color: var(--muted); text-wrap: pretty; }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (min-width: 860px) { .about-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; } }
+.about-copy { display: flex; flex-direction: column; gap: 18px; max-width: 40rem; }
+.about-copy .lede { font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.45; text-wrap: pretty; }
+.about-copy p { text-wrap: pretty; }
+.polaroids { max-width: 440px; }
+.polaroids img, .ink { mix-blend-mode: multiply; }
+
+.facts { display: flex; flex-direction: column; margin-top: clamp(36px, 6vw, 72px); border-top: 1px solid var(--rule); }
+.fact { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding-block: 22px; border-bottom: 1px solid var(--rule); }
+@media (min-width: 720px) { .fact { grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr); gap: 24px; } }
+.fact h3 { font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.rows { display: flex; flex-direction: column; gap: 10px; }
+.rows li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 20px; }
+@media (min-width: 720px) {
+  .rows.three li { grid-template-columns: minmax(9rem, 12rem) minmax(0, 1fr) minmax(0, 1fr); }
+  .rows.two li { grid-template-columns: minmax(6rem, 9rem) minmax(0, 1fr); }
+}
+.rows .k { color: var(--muted); font-variant-numeric: tabular-nums; }
+.rows .strong { font-weight: 600; }
+.rows a { overflow-wrap: anywhere; }
+.copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.copy-row .addr { overflow-wrap: anywhere; user-select: all; }
+.copybtn {
+  font: inherit; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--cobalt); background: transparent; border: 1px solid var(--cobalt); padding: 4px 12px; cursor: pointer;
+}
+.copybtn:hover { background: var(--cobalt); color: var(--paper-lift); }
+.skills { display: flex; flex-direction: column; gap: 10px; }
+.skills img { width: min(100%, 440px); mix-blend-mode: multiply; }
+.skills p { color: var(--muted); font-size: 0.9375rem; }
+
+/* Filter */
+.filter { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.chip {
+  font-family: var(--font-body); color: var(--cobalt); background: transparent; border: 1px solid var(--cobalt);
+  padding: 7px 14px; cursor: pointer; text-transform: none; letter-spacing: 0.02em; font-size: 0.875rem;
+}
+.chip:hover { background: rgba(36, 66, 160, 0.08); }
+.chip[aria-pressed="true"] { background: var(--cobalt); color: var(--paper-lift); }
+.filter-status { flex-basis: 100%; color: var(--muted); font-size: 0.875rem; }
+@media (min-width: 720px) { .filter-status { flex-basis: auto; margin-left: 8px; } }
+
+/* Employer block */
+.employer { padding-top: clamp(40px, 6vw, 80px); }
+.filter + .employer { padding-top: clamp(32px, 4vw, 56px); }
+.emp-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px 40px; align-items: center; padding-bottom: clamp(20px, 3vw, 36px); border-bottom: 1px solid var(--rule); }
+@media (min-width: 860px) { .emp-head { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); } }
+.emp-head .logo { width: min(100%, 260px); mix-blend-mode: multiply; }
+.emp-info { display: flex; flex-direction: column; gap: 8px; }
+.emp-info h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.3rem, 3vw, 2.1rem); color: var(--cobalt); line-height: 1.15; }
+.emp-info .when { color: var(--signal-text); font-weight: 500; font-variant-numeric: tabular-nums; }
+.emp-info .does { max-width: 46rem; color: var(--ink); text-wrap: pretty; }
+
+/* Project row */
+.project { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: clamp(28px, 4.5vw, 56px); border-bottom: 1px solid var(--rule); }
+@media (min-width: 980px) {
+  .project { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: start; }
+  .project.flip .p-figs { order: -1; }
+  .project.flip { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+}
+.p-text { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.tags span { color: var(--signal-text); font-size: 0.75rem; }
+.tags span::before { content: "[ "; }
+.tags span::after { content: " ]"; }
+.p-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.15rem, 2.2vw, 1.6rem); line-height: 1.25; color: var(--ink); }
+.p-meta { color: var(--muted); font-size: 0.9375rem; font-variant-numeric: tabular-nums; }
+.p-label { margin-top: 6px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.p-lead { text-wrap: pretty; max-width: 38rem; }
+.stars { display: flex; flex-direction: column; gap: 8px; max-width: 38rem; }
+.stars li { position: relative; padding-left: 26px; text-wrap: pretty; }
+.stars li::before {
+  content: ""; position: absolute; left: 0; top: 0.5em; width: 14px; height: 14px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%232442A0' d='M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.100 11.100 11.100 6.600 12 0z'/></svg>") center / contain no-repeat;
+}
+.p-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 6px; }
+.p-links a { font-weight: 600; font-size: 0.9375rem; }
+.p-note { color: var(--muted); font-size: 0.9375rem; max-width: 38rem; text-wrap: pretty; }
+
+.p-figs { display: flex; flex-direction: column; gap: 26px; min-width: 0; }
+.print {
+  position: relative; background: #fff; padding: clamp(6px, 1vw, 10px);
+  box-shadow: 0 1px 0 rgba(30, 34, 54, 0.08), 0 14px 30px -16px rgba(30, 34, 54, 0.38);
+}
+.print::before {
+  content: ""; position: absolute; top: -11px; left: 50%; width: 88px; height: 22px;
+  transform: translateX(-50%) rotate(-3deg); background: rgba(232, 93, 58, 0.45);
+}
+.project.flip .print::before { transform: translateX(-50%) rotate(2.5deg); }
+.print img { width: 100%; }
+.print figcaption { padding: 8px 4px 2px; color: var(--muted); font-size: 0.8125rem; }
+
+/* Insights (T&A fanpage) */
+.insights { display: flex; flex-direction: column; gap: 14px; margin-top: 6px; }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 16px; }
+@media (min-width: 640px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.stats dt { color: var(--muted); font-size: 0.8125rem; letter-spacing: 0.04em; }
+.stats dd { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 3.4vw, 2.2rem); color: var(--cobalt); line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stats .delta { display: block; margin-top: 2px; font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; color: var(--signal-text); }
+
+/* Contact */
+.contact { position: relative; overflow: hidden; padding-block: clamp(56px, 9vw, 120px) clamp(48px, 7vw, 96px); }
+.contact .bow { position: absolute; right: -4%; bottom: -6%; width: clamp(150px, 26vw, 360px); mix-blend-mode: multiply; pointer-events: none; z-index: 0; }
+.contact-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: end; }
+@media (min-width: 860px) { .contact-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 56px; } }
+.contact .portrait { width: min(100%, 380px); mix-blend-mode: multiply; }
+.contact-copy { display: flex; flex-direction: column; gap: 22px; padding-bottom: clamp(0px, 3vw, 40px); }
+.contact-copy h2 { font-family: var(--font-display); font-weight: 400; color: var(--cobalt); font-size: clamp(1.5rem, 3.8vw, 2.8rem); line-height: 1.18; text-transform: none; }
+.contact-list { display: flex; flex-direction: column; gap: 10px; }
+.contact-list li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 20px; }
+@media (min-width: 560px) { .contact-list li { grid-template-columns: 7rem minmax(0, 1fr); } }
+.contact-list .k { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+.foot { padding-block: 22px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; }
+footer { padding-bottom: 0; }
+
+/* ---------- Motion layer ----------
+   Every rule below hangs off html.fx (set only when the viewer has not asked for reduced motion),
+   so with reduced motion the page is the same static desk as before. html.go starts the intro. */
+:root { --ease: cubic-bezier(.2, .75, .2, 1); }
+
+/* Scroll progress, drawn as a strip of signal-orange tape along the top edge */
+.progress { display: none; position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 3px; z-index: 50; pointer-events: none; }
+.fx .progress { display: block; }
+.progress i { display: block; height: 100%; background: var(--signal); transform-origin: 0 50%; transform: scaleX(0); }
+
+/* Cursor ring (fine pointers only) */
+.cursor { display: none; position: fixed; left: 0; top: 0; width: 0; height: 0; z-index: 60; pointer-events: none; }
+.cur .cursor { display: block; }
+.cursor i { position: absolute; left: -17px; top: -17px; width: 34px; height: 34px; border: 1.5px solid var(--cobalt); border-radius: 50%; opacity: 0; transition: opacity .25s ease, transform .3s var(--ease), background-color .3s ease; }
+.cursor.on i { opacity: .85; }
+.cursor.hot i { transform: scale(1.9); background: rgba(36, 66, 160, .12); }
+
+/* Intro: wordmark letters rise out of a mask, then the rest settles in behind them */
+.fx:not(.go) .hero h1 { visibility: hidden; }
+.word { display: inline-block; white-space: nowrap; }
+.ch-wrap { display: inline-block; overflow: hidden; vertical-align: top; padding: .04em .03em .09em; margin: 0 -.03em; }
+.ch { display: inline-block; transform-origin: 50% 85%; }
+.fx:not(.go) .ch { translate: 0 115%; rotate: 8deg; }
+.fx .ch { transition: rotate .35s var(--ease), color .35s ease; }
+.fx.go .ch { animation: chIn 1s var(--ease) backwards; animation-delay: calc(var(--i) * 55ms + 150ms); }
+.fx .ch:hover { rotate: -6deg; color: var(--signal); }
+@keyframes chIn { from { translate: 0 115%; rotate: 8deg; } to { translate: 0 0; rotate: 0deg; } }
+@keyframes fadeUp { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@keyframes fadeDown { from { opacity: 0; translate: 0 -12px; } to { opacity: 1; translate: 0 0; } }
+.fx .topbar, .fx .hero-in > .year, .fx .hero-in > .hero-meta, .fx .hero-in > .hero-line { opacity: 0; }
+.fx.go .topbar { animation: fadeDown .9s var(--ease) .1s both; }
+.fx.go .hero-in > .year { animation: fadeUp .9s var(--ease) .05s both; }
+.fx.go .hero-in > .hero-meta { animation: fadeUp .9s var(--ease) .8s both; }
+.fx.go .hero-in > .hero-line { animation: fadeUp .9s var(--ease) 1s both; }
+
+/* Bows drift, sparkles twinkle. Parallax uses the translate property so it stacks with these. */
+@keyframes bowIn { from { opacity: 0; scale: .9; } to { opacity: 1; scale: 1; } }
+@keyframes floatA { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-14px) rotate(1.6deg); } }
+@keyframes floatB { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(12px) rotate(-1.8deg); } }
+@keyframes twinkle { 0%, 100% { transform: scale(.75) rotate(0deg); opacity: .75; } 50% { transform: scale(1.15) rotate(45deg); opacity: 1; } }
+.fx .hero .bow { opacity: 0; }
+.fx.go .hero .bow-r { animation: bowIn 1.4s var(--ease) .25s both, floatA 11s ease-in-out 1.7s infinite; }
+.fx.go .hero .bow-l { animation: bowIn 1.4s var(--ease) .45s both, floatB 13s ease-in-out 1.9s infinite; }
+.fx .contact .bow { animation: floatA 12s ease-in-out infinite; }
+.fx .spark { animation: twinkle 3.6s ease-in-out infinite; }
+.fx .spark.s2 { animation-duration: 4.4s; animation-delay: -1.6s; }
+
+/* Crossed tape bands between the cover and About */
+.ticker { position: relative; height: clamp(120px, 13vw, 170px); overflow: hidden; }
+.tk-band { position: absolute; left: -6%; width: 112%; top: 50%; display: flex; overflow: hidden; white-space: nowrap; padding-block: clamp(10px, 1.3vw, 16px); font-family: var(--font-display); font-weight: 400; font-size: clamp(.8rem, 1.7vw, 1.25rem); letter-spacing: .04em; text-transform: uppercase; }
+.tk-a { background: var(--cobalt); color: var(--paper-lift); transform: translateY(-50%) rotate(-2deg); }
+.tk-b { background: var(--signal); color: var(--ink); transform: translateY(-50%) rotate(1.6deg); }
+.tk-track { display: flex; flex: none; }
+.tk-g { display: flex; flex: none; align-items: center; gap: clamp(18px, 2.6vw, 36px); padding-right: clamp(18px, 2.6vw, 36px); }
+.tk-s { width: 1.1em; height: 1.1em; flex: none; }
+.fx .tk-ready .tk-track { animation: tk 38s linear infinite; }
+.fx .tk-ready .tk-b .tk-track { animation-direction: reverse; animation-duration: 46s; }
+@keyframes tk { to { transform: translateX(-25%); } }
+
+/* Scroll reveal. Prints land on the desk, tape sticks down after, logos stamp in. */
+.fx .reveal {
+  opacity: 0; translate: 0 34px;
+  transition: opacity .85s var(--ease) var(--d, 0ms), translate .95s var(--ease) var(--d, 0ms), scale .95s var(--ease) var(--d, 0ms), rotate .95s var(--ease) var(--d, 0ms);
+}
+.fx .reveal.in { opacity: 1; translate: 0 0; }
+.fx .polaroids.reveal, .fx .portrait.reveal { rotate: -5deg; scale: .93; }
+.fx .polaroids.reveal.in, .fx .portrait.reveal.in { rotate: 0deg; scale: 1; }
+.fx .logo.reveal {
+  translate: 0 0; scale: 1.4; rotate: -10deg;
+  transition: opacity .45s ease var(--d, 0ms), scale .75s cubic-bezier(.3, 1.6, .5, 1) var(--d, 0ms), rotate .75s cubic-bezier(.3, 1.6, .5, 1) var(--d, 0ms);
+}
+.fx .logo.reveal.in { scale: 1; rotate: 0deg; }
+
+.fx .print {
+  --rot: var(--rot0, 0deg);
+  transform: perspective(1100px) rotate(var(--rot)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--s, 1));
+}
+.fx .print.reveal {
+  translate: 0 64px; scale: .94;
+  transition: opacity .85s var(--ease) var(--d, 0ms), translate 1s var(--ease) var(--d, 0ms), scale 1s var(--ease) var(--d, 0ms), transform .45s ease-out, box-shadow .45s ease;
+}
+.fx .print.reveal.in { translate: 0 0; scale: 1; }
+.fx .print:hover { --rot: 0deg; --s: 1.02; box-shadow: 0 1px 0 rgba(30, 34, 54, 0.08), 0 28px 46px -18px rgba(30, 34, 54, 0.5); }
+.fx .print.reveal::before { scale: 0 1; transition: scale .5s var(--ease) calc(var(--d, 0ms) + 450ms); }
+.fx .print.reveal.in::before { scale: 1 1; }
+
+.fx .stars li::before { transition: rotate .7s var(--ease); }
+.fx .project:hover .stars li::before { rotate: 180deg; }
+.fx .chip { transition: background-color .25s ease, color .25s ease, translate .25s var(--ease); }
+.fx .chip:hover { translate: 0 -2px; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="progress" aria-hidden="true"><i></i></div>
+<div class="cursor" aria-hidden="true"><i></i></div>
+
+<header class="topbar wrap">
+  <a class="mark" href="#top">[Thao Nhi]</a>
+  <nav aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img class="bow bow-r" src="img/bow_r.jpg" alt="" width="583" height="642">
+    <img class="bow bow-l" src="img/bow_l.jpg" alt="" width="600" height="497">
+    <svg class="spark s1" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg>
+    <svg class="spark s2" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg>
+    <div class="wrap hero-in">
+      <p class="year">2026</p>
+      <h1><span class="sr">Thảo Nhi </span>Portfolio</h1>
+      <div class="hero-meta">
+        <span class="br">[ Thảo Nhi ]</span>
+        <nav class="zips" aria-label="Browse work by folder">
+          <span aria-hidden="true">[</span>
+          <a href="#work" data-filter="content">Content.zip</a><span aria-hidden="true">/</span>
+          <a href="#work" data-filter="creative">Creative.zip</a><span aria-hidden="true">/</span>
+          <a href="#work" data-filter="copywriter">Copywriter.zip</a><span aria-hidden="true">/</span>
+          <a href="#work" data-filter="media">Media.zip</a>
+          <span aria-hidden="true">]</span>
+        </nav>
+      </div>
+      <p class="hero-line">Copywriter, content creator and media communicator. Ideas that make people feel something, planned, written, filmed and published.</p>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="tk-band tk-a"><div class="tk-track"><span class="tk-g"><span>[ Content.zip ]</span><svg class="tk-s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg><span>[ Creative.zip ]</span><svg class="tk-s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg><span>[ Copywriter.zip ]</span><svg class="tk-s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg><span>[ Media.zip ]</span><svg class="tk-s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg></span></div></div>
+    <div class="tk-band tk-b"><div class="tk-track"><span class="tk-g"><span>Copywriter</span><svg class="tk-s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg><span>Content creator</span><svg class="tk-s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg><span>Media communicator</span><svg class="tk-s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg><span>Portfolio.26</span><svg class="tk-s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.6 4.9 11.1 12 12-7.1.9-11.1 5.4-12 12-.9-6.6-4.9-11.1-12-12C7.1 11.1 11.1 6.6 12 0z"/></svg></span></div></div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="label">[ About me ]</p>
+          <p class="lede">Hi, I'm Nhi (Chíp Bông). I'm a copywriter, content creator and media communicator obsessed with ideas that make people feel something.</p>
+          <p>I work where concepts meet execution, turning raw ideas into cohesive, multi-platform experiences. Detail-oriented by nature and adaptable by instinct, I'm comfortable under pressure and always ready to challenge the obvious, to create work that doesn't just blend in, but stands out.</p>
+          <p>I'm someone who loves to explore: always curious, always chasing new experiences, always up for trying something new. But at some point, I realized… no one really wants to wander alone forever, right?</p>
+        </div>
+        <figure class="polaroids">
+          <img src="img/about_polaroids.jpg" alt="Two instant-photo prints of Nhi, clipped together" width="649" height="763" loading="lazy">
+        </figure>
+      </div>
+
+      <div class="facts">
+        <div class="fact">
+          <h3>Contact</h3>
+          <ul class="rows two">
+            <li><span class="k">Phone</span><span>081.770.8977</span></li>
+            <li><span class="k">Mail</span><span class="copy-row"><span class="addr" id="mail-a">Nguyendothaonhipct2002@gmail.com</span><button class="copybtn" type="button" data-copy="Nguyendothaonhipct2002@gmail.com" data-target="mail-a">Copy</button></span></li>
+            <li><span class="k">Instagram</span><span><a href="https://www.instagram.com/dzitoday" target="_blank" rel="noopener noreferrer">Dzitoday</a></span></li>
+            <li><span class="k">Facebook</span><span><a href="https://www.facebook.com/nguyendothaonhi2201/" target="_blank" rel="noopener noreferrer">facebook.com/nguyendothaonhi2201</a></span></li>
+          </ul>
+        </div>
+        <div class="fact">
+          <h3>Education</h3>
+          <ul class="rows three">
+            <li><span class="k">2020 to 2024</span><span class="strong">Van Lang University</span><span>Faculty of Public Relations and Communications</span></li>
+            <li><span class="k">2023</span><span class="strong">Color Me</span><span>Adobe Illustrator course</span></li>
+          </ul>
+        </div>
+        <div class="fact">
+          <h3>Experience</h3>
+          <ul class="rows three">
+            <li><span class="k">Jun 2024 to now</span><span class="strong">T&amp;A Investment Corp</span><span>Content Creator</span></li>
+            <li><span class="k">Nov 2023 to May 2024</span><span class="strong">Kiến Vàng Event</span><span>Communications, Events Intern</span></li>
+            <li><span class="k">May 2023 to Jul 2023</span><span class="strong">Synapse Studio</span><span>Marketing Trainee</span></li>
+          </ul>
+        </div>
+        <div class="fact">
+          <h3>Skills</h3>
+          <div class="skills">
+            <img src="img/skills_icons.jpg" alt="Microsoft Office, CapCut, Adobe Illustrator and Canva logos" width="700" height="104" loading="lazy">
+            <p>Microsoft Office, CapCut, Adobe Illustrator, Canva</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">[ Work ]</p>
+        <h2>Content, copy, design and media</h2>
+        <p>Grouped by where the work was done. Pick a folder to show only that kind of work.</p>
+      </div>
+
+      <div class="filter" role="group" aria-label="Filter work by folder">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All work</button>
+        <button class="chip" type="button" data-filter="content" aria-pressed="false">Content.zip</button>
+        <button class="chip" type="button" data-filter="creative" aria-pressed="false">Creative.zip</button>
+        <button class="chip" type="button" data-filter="copywriter" aria-pressed="false">Copywriter.zip</button>
+        <button class="chip" type="button" data-filter="media" aria-pressed="false">Media.zip</button>
+        <p class="filter-status" id="filter-status" aria-live="polite">Showing all 13 projects</p>
+      </div>
+
+      <!-- T&A -->
+      <div class="employer" id="ta">
+        <div class="emp-head">
+          <img class="logo" src="img/logo_ta.jpg" alt="T&amp;A logo" width="620" height="387" loading="lazy">
+          <div class="emp-info">
+            <h3>T&amp;A Investment Corp</h3>
+            <p class="when">Content Creator, Jun 2024 to now. Content marketing and event media.</p>
+            <p class="does">Executing content across social platforms. Producing video from concept to final edit. Capturing and delivering event media for sales and marketing. Creating PR and communication materials for branding.</p>
+          </div>
+        </div>
+
+        <article class="project" data-cats="content">
+          <div class="p-text">
+            <p class="tags"><span>Content</span></p>
+            <h4 class="p-title">T&amp;A Investment Corp fanpage</h4>
+            <p class="p-meta">Facebook · channel takeover 13.06.2024 · 6.3K followers</p>
+            <p class="p-label">My input</p>
+            <ul class="stars">
+              <li>Manage the content and visual direction of the fanpage.</li>
+              <li>Develop monthly content plans.</li>
+              <li>Create content around core business activities: project launches, product launches, training and product displays.</li>
+              <li>Produce and edit video content (reels, trending content) to boost engagement.</li>
+              <li>Execute seasonal and internal campaign content.</li>
+            </ul>
+            <p class="p-links"><a href="https://q.me-qr.com/2r5cad2z" target="_blank" rel="noopener noreferrer">Watch more ↗</a></p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/ta_posts.jpg" alt="Phone screenshots of the T&amp;A fanpage and its posts: sales events, rankings, campaigns and anniversaries" width="1300" height="720" loading="lazy"></figure>
+            <div class="insights">
+              <dl class="stats">
+                <div><dt>Viewers</dt><dd>47.5K<span class="delta">+552%</span></dd></div>
+                <div><dt>Views</dt><dd>143.8K<span class="delta">+330.1%</span></dd></div>
+                <div><dt>Page visits</dt><dd>8.4K<span class="delta">+259.1%</span></dd></div>
+                <div><dt>Link clicks</dt><dd>1.6K</dd></div>
+              </dl>
+              <figure class="print"><img src="img/ta_fp_charts.jpg" alt="Four Facebook insights charts: viewers, views, link clicks and page visits, 16 March to 4 April" width="1300" height="233" loading="lazy"><figcaption>Facebook insights, 16 Mar to 4 Apr. Percentages are the change Facebook reported for the period.</figcaption></figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="project flip" data-cats="content copywriter">
+          <div class="p-text">
+            <p class="tags"><span>Content</span><span>Copywriter</span></p>
+            <h4 class="p-title">Content plans and post briefs</h4>
+            <p class="p-lead">Monthly content plans organised by pillar (Branding, Sale, Recruitment, Engaging), a running log of Facebook posts by audience, format and type, and a content-details brief for each post with its copy and visual.</p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/ta_plan.jpg" alt="July 2024 content plan, a log of Facebook posts and two content-details briefs with copy and visual" width="1300" height="798" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="project" data-cats="content media">
+          <div class="p-text">
+            <p class="tags"><span>Content</span><span>Media</span></p>
+            <h4 class="p-title">T&amp;A Corp on TikTok</h4>
+            <p class="p-meta">Channel takeover 13.06.2024 · 2,407 followers · 10.4K likes</p>
+            <p class="p-label">My input</p>
+            <ul class="stars">
+              <li>Managed all content and visual direction of the channel and developed monthly content plans.</li>
+              <li>Edited and produced all video content.</li>
+              <li>Supported candidate attraction and increased traffic to the company's fanpage.</li>
+            </ul>
+            <p class="p-links"><a href="https://q.me-qr.com/cr15dk31" target="_blank" rel="noopener noreferrer">Watch more ↗</a></p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/ta_tt_reels.jpg" alt="Four TikTok videos from the T&amp;A Corp channel: sales team features, promotions and a client meeting" width="1100" height="467" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="project flip" data-cats="content copywriter media">
+          <div class="p-text">
+            <p class="tags"><span>Content</span><span>Copywriter</span><span>Media</span></p>
+            <h4 class="p-title">T&amp;A Sàn F1 on TikTok</h4>
+            <p class="p-meta">Channel takeover 10.08.2024 · 2,333 followers · 11.2K likes</p>
+            <p class="p-label">My input</p>
+            <ul class="stars">
+              <li>Developed the Sàn F1 channel from its early stage.</li>
+              <li>Created sales-oriented content for T&amp;A's F1 projects.</li>
+              <li>Produced project videos to support the Sales team and help customers understand products clearly.</li>
+              <li>Handled ideation, scriptwriting, on-site filming and content optimization.</li>
+            </ul>
+            <p class="p-links"><a href="https://code.nineqr.com/HCUHIBZH" target="_blank" rel="noopener noreferrer">Watch more ↗</a></p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/ta_f1_work.jpg" alt="TikTok feed of the Sàn F1 channel with project videos and the video scripts behind them" width="1300" height="700" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="project" data-cats="media copywriter">
+          <div class="p-text">
+            <p class="tags"><span>Media</span><span>Copywriter</span></p>
+            <h4 class="p-title">Anniversary, year-end and corporate videos</h4>
+            <p class="p-lead">Led end-to-end production of key video projects (anniversary, year-end recap, corporate introduction), from concept development and scripting to filming, editing and final delivery.</p>
+            <p class="p-label">Watch</p>
+            <p class="p-links">
+              <a href="https://qrco.de/bgkHlp" target="_blank" rel="noopener noreferrer">T&amp;A 9-Year Anniversary ↗</a>
+              <a href="https://www.youtube.com/watch?v=bVwmGyv1fuU&amp;t=11s" target="_blank" rel="noopener noreferrer">T&amp;A Wrapped 2024 ↗</a>
+              <a href="https://q.me-qr.com/l7cfk5tu" target="_blank" rel="noopener noreferrer">T&amp;A, A Year in Review ↗</a>
+              <a href="https://q.me-qr.com/g2sz19ne" target="_blank" rel="noopener noreferrer">T&amp;A 8-Year Anniversary ↗</a>
+            </p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/ta_videos.jpg" alt="Six video frames: T&amp;A Iconics 2025, 9th anniversary Next-Level Momentum, 2024 Wrapped, Bước chân đầu tiên and a stage photo" width="1200" height="512" loading="lazy"></figure>
+            <figure class="print"><img src="img/ta_scripts.jpg" alt="Script and storyboard documents for the anniversary and year-in-review videos" width="1300" height="502" loading="lazy"><figcaption>Scripts and shot lists for the video projects.</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="project flip" data-cats="copywriter">
+          <div class="p-text">
+            <p class="tags"><span>Copywriter</span></p>
+            <h4 class="p-title">MC scripts for company events</h4>
+            <p class="p-lead">Developed MC scripts for quarterly reviews, annual summaries, the Year End Party (YEP) and business-driven events such as project introduction events.</p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/ta_mc.jpg" alt="Event run-sheets and MC scripts for quarterly reviews, a year-end party and project events" width="1300" height="515" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="project" data-cats="copywriter creative">
+          <div class="p-text">
+            <p class="tags"><span>Copywriter</span><span>Creative</span></p>
+            <h4 class="p-title">Letters and external communications</h4>
+            <p class="p-lead">Developed and drafted communication and external-facing materials (thank-you letters, congratulatory messages, invitations, announcements, birthday cards and more), keeping the content polished and aligned with the brand image.</p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/ta_letters.jpg" alt="Ten designed thank-you letters for partners and events, in different brand colours" width="1200" height="649" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="project flip" data-cats="media">
+          <div class="p-text">
+            <p class="tags"><span>Media</span></p>
+            <h4 class="p-title">Event media</h4>
+            <p class="p-lead">Took part in media coverage for internal and partner events, delivering complete, high-quality visual assets for sales and marketing.</p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/ta_media1.jpg" alt="Photos from partner events: stage shows, group photos and a launch ceremony" width="1300" height="623" loading="lazy"></figure>
+            <figure class="print"><img src="img/ta_media2.jpg" alt="Photos from sales briefings, a lion dance opening and a groundbreaking ceremony" width="1300" height="747" loading="lazy"></figure>
+          </div>
+        </article>
+      </div>
+
+      <!-- Kiến Vàng -->
+      <div class="employer" id="kvtv">
+        <div class="emp-head">
+          <img class="logo" src="img/logo_kvtv.jpg" alt="KVTV logo" width="620" height="381" loading="lazy">
+          <div class="emp-info">
+            <h3>Kiến Vàng Event Communications</h3>
+            <p class="when">Communications, Events Intern, Nov 2023 to May 2024.</p>
+            <p class="does">Planned and executed integrated marketing and media content across social, branding and video production.</p>
+          </div>
+        </div>
+
+        <article class="project" data-cats="content creative">
+          <div class="p-text">
+            <p class="tags"><span>Content</span><span>Creative</span></p>
+            <h4 class="p-title">Truyền thông Sự kiện Kiến Vàng fanpage</h4>
+            <p class="p-meta">Facebook · channel takeover 20.11.2023 · 12K followers</p>
+            <p class="p-label">My input</p>
+            <ul class="stars">
+              <li>Planned and executed weekly and monthly content marketing for the fanpage.</li>
+              <li>Developed content and designed media publications.</li>
+            </ul>
+            <p class="p-links"><a href="https://qrco.de/bgkcT5" target="_blank" rel="noopener noreferrer">Watch more ↗</a></p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/kvtv_fp.jpg" alt="The KVTV fanpage and phone screenshots of event posts: year-end party, grand opening and Tet teabreak" width="1300" height="656" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="project flip" data-cats="copywriter media">
+          <div class="p-text">
+            <p class="tags"><span>Copywriter</span><span>Media</span></p>
+            <h4 class="p-title">TVC and film scripts</h4>
+            <ul class="stars">
+              <li>Wrote TVC and film scripts for clients.</li>
+              <li>Collaborated with the filming team on TVC and film projects.</li>
+              <li>Coordinated with the editing team to produce the final video outputs.</li>
+            </ul>
+            <p class="p-note">Scripts shown: Hoàng Long's 10-year anniversary clip and an eParking product introduction.</p>
+            <p class="p-links"><a href="https://q.me-qr.com/f20wsij0" target="_blank" rel="noopener noreferrer">Hoàng Long 2024, 10-year film ↗</a></p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/kvtv_scripts.jpg" alt="Two-column video scripts with shot descriptions, voice-over and timing" width="1200" height="672" loading="lazy"></figure>
+          </div>
+        </article>
+      </div>
+
+      <!-- Synapse -->
+      <div class="employer" id="synapse">
+        <div class="emp-head">
+          <img class="logo" src="img/logo_synapse.jpg" alt="Synapse Studio logo" width="620" height="383" loading="lazy">
+          <div class="emp-info">
+            <h3>Synapse Studio</h3>
+            <p class="when">Marketing Trainee, May 2023 to Jul 2023.</p>
+            <p class="does">Executed the social media content strategy: content planning, creation and fanpage management. Designed branding and internal communication materials. Supported event media and TikTok content.</p>
+          </div>
+        </div>
+
+        <article class="project" data-cats="content creative">
+          <div class="p-text">
+            <p class="tags"><span>Content</span><span>Creative</span></p>
+            <h4 class="p-title">Synapse Studio VN fanpage</h4>
+            <p class="p-meta">Facebook · channel takeover 04.05.2023 · 5.2K followers</p>
+            <p class="p-label">My input</p>
+            <ul class="stars">
+              <li>Created content and designed publications for the fanpage.</li>
+              <li>Responsible for the company's internal images and videos.</li>
+            </ul>
+            <p class="p-links"><a href="https://q.me-qr.com/jen93kor" target="_blank" rel="noopener noreferrer">Watch more ↗</a></p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/syn_fp.jpg" alt="The Synapse Studio VN fanpage and posts: expo booth, artist trainee call, graduation and a notice" width="1300" height="612" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="project flip" data-cats="content media">
+          <div class="p-text">
+            <p class="tags"><span>Content</span><span>Media</span></p>
+            <h4 class="p-title">Synapse Studio VN on TikTok</h4>
+            <p class="p-meta">4,141 followers · 64.6K likes</p>
+            <p class="p-label">My input</p>
+            <ul class="stars">
+              <li>Coordinated to develop ideas and visual content for the channel.</li>
+              <li>Took part directly in video production with the editing team.</li>
+              <li>Reported performance and results every week.</li>
+            </ul>
+            <p class="p-links"><a href="https://q.me-qr.com/pxb3e7fc" target="_blank" rel="noopener noreferrer">Watch more ↗</a></p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/syn_tt.jpg" alt="Synapse Studio VN TikTok videos and the channel's profile grid" width="1200" height="704" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="project" data-cats="creative">
+          <div class="p-text">
+            <p class="tags"><span>Creative</span></p>
+            <h4 class="p-title">Internal communication and brand design</h4>
+            <p class="p-lead">Designed a wide range of internal communication materials, including the Synapse brochure, anniversary invitations, name cards, menus, employee assets and corporate branding content.</p>
+          </div>
+          <div class="p-figs">
+            <figure class="print"><img src="img/syn_design.jpg" alt="Synapse brochure, goodbye cards, sticker, business cards, anniversary invitation, menu and office posters" width="1300" height="534" loading="lazy"></figure>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">[ Events and community ]</p>
+        <h2>Events I helped make happen</h2>
+        <p>Student productions and a community project, from planning to the day itself.</p>
+      </div>
+
+      <article class="project">
+        <div class="p-text">
+          <h3 class="p-title">Văn Lang Concert 2023 · Colorpop</h3>
+          <p class="p-meta">Production Department Collaborator</p>
+          <ul class="stars">
+            <li>Coordinated personnel and event operations.</li>
+            <li>Handled communication and promotion for the event's publications.</li>
+          </ul>
+        </div>
+        <div class="p-figs">
+          <figure class="print"><img src="img/vl_concert.jpg" alt="Concert stills, the Colorpop booth and the production team" width="1200" height="613" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="project flip">
+        <div class="p-text">
+          <h3 class="p-title">Light in the Dark · Sống như trái dứa</h3>
+          <p class="p-meta">Planner, Receptionist, Logistics</p>
+          <ul class="stars">
+            <li>Planned, implemented and managed event activities.</li>
+            <li>Set up the dining areas, workshop areas and main stage.</li>
+            <li>Checked in guests and coordinated event operations.</li>
+          </ul>
+        </div>
+        <div class="p-figs">
+          <figure class="print"><img src="img/lit_dark.jpg" alt="Guests and organisers at the Light in the Dark event, a workshop table and the team" width="1200" height="688" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-text">
+          <h3 class="p-title">EVG Community Library Project</h3>
+          <p class="p-meta">Community-serving collaborator · Trà Vinh</p>
+          <ul class="stars">
+            <li>Planned field trips in detail.</li>
+            <li>Planned classes for children over 2 days and 1 night.</li>
+            <li>Volunteered at the Trà Vinh library.</li>
+          </ul>
+          <p class="p-note">Documents shown: the trip schedule and budget for 65 people, and the Design Thinking lesson plans for the children's classes.</p>
+        </div>
+        <div class="p-figs">
+          <figure class="print"><img src="img/evg_plan.jpg" alt="Trip timeline, cost estimate and three Design Thinking lesson plans" width="1200" height="724" loading="lazy"></figure>
+          <figure class="print"><img src="img/evg_photos.jpg" alt="Children's class at the library, a campfire evening and a group photo" width="1200" height="627" loading="lazy"></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <img class="bow" src="img/bow_r.jpg" alt="" width="583" height="642" loading="lazy">
+    <div class="wrap">
+      <div class="contact-grid">
+        <img class="portrait" src="img/portrait.jpg" alt="Portrait of Nhi in a white knit sweater" width="760" height="823" loading="lazy">
+        <div class="contact-copy">
+          <p class="label">[ Contact ]</p>
+          <h2>In case I've piqued your interest… Let's make new things together! ^^</h2>
+          <ul class="contact-list">
+            <li><span class="k">Mail</span><span class="copy-row"><span class="addr" id="mail-b">Nguyendothaonhipct2002@gmail.com</span><button class="copybtn" type="button" data-copy="Nguyendothaonhipct2002@gmail.com" data-target="mail-b">Copy</button></span></li>
+            <li><span class="k">Phone</span><span>081.770.8977</span></li>
+            <li><span class="k">Instagram</span><span><a href="https://www.instagram.com/dzitoday" target="_blank" rel="noopener noreferrer">Dzitoday</a></span></li>
+            <li><span class="k">Facebook</span><span><a href="https://www.facebook.com/nguyendothaonhi2201/" target="_blank" rel="noopener noreferrer">facebook.com/nguyendothaonhi2201</a></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot"><span>[Thảo Nhi]</span><span>[Portfolio.26]</span></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var chips = [].slice.call(document.querySelectorAll('.chip[data-filter]'));
+  var triggers = [].slice.call(document.querySelectorAll('[data-filter]'));
+  var projects = [].slice.call(document.querySelectorAll('#work .project'));
+  var blocks = [].slice.call(document.querySelectorAll('#work .employer'));
+  var status = document.getElementById('filter-status');
+  var names = { content: 'Content.zip', creative: 'Creative.zip', copywriter: 'Copywriter.zip', media: 'Media.zip' };
+
+  function apply(f) {
+    var shown = 0;
+    projects.forEach(function (p) {
+      var cats = (p.getAttribute('data-cats') || '').split(' ');
+      var ok = f === 'all' || cats.indexOf(f) > -1;
+      p.hidden = !ok;
+      if (ok) shown++;
+    });
+    blocks.forEach(function (b) { b.hidden = !b.querySelector('.project:not([hidden])'); });
+    chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.getAttribute('data-filter') === f)); });
+    if (status) {
+      status.textContent = f === 'all'
+        ? 'Showing all ' + shown + ' projects'
+        : 'Showing ' + shown + ' ' + (shown === 1 ? 'project' : 'projects') + ' in ' + names[f];
+    }
+  }
+  triggers.forEach(function (t) {
+    t.addEventListener('click', function () { apply(t.getAttribute('data-filter')); });
+  });
+
+  [].slice.call(document.querySelectorAll('.copybtn')).forEach(function (btn) {
+    var label = btn.textContent;
+    function flash(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = label; }, 1800); }
+    function selectText() {
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if (!el || !window.getSelection) return;
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      flash('Selected');
+    }
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { flash('Copied'); }, selectText);
+      } else { selectText(); }
+    });
+  });
+})();
+</script>
+
+<script>
+/* Motion layer: wordmark intro, scroll reveal, print tilt, stat counters, tape bands, parallax, cursor ring. */
+(function () {
+  var root = document.documentElement;
+  if (!root.classList.contains('fx')) return;
+  var fine = false;
+  try { fine = matchMedia('(hover: hover) and (pointer: fine)').matches; } catch (e) {}
+  var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+
+  /* Wordmark: split into letters */
+  var h1 = document.querySelector('.hero h1');
+  if (h1 && h1.lastChild && h1.lastChild.nodeType === 3) {
+    var txt = h1.lastChild.textContent.trim();
+    var word = document.createElement('span');
+    word.className = 'word';
+    word.setAttribute('aria-hidden', 'true');
+    txt.split('').forEach(function (c, i) {
+      var w = document.createElement('span'); w.className = 'ch-wrap';
+      var s = document.createElement('span'); s.className = 'ch'; s.style.setProperty('--i', i); s.textContent = c;
+      w.appendChild(s); word.appendChild(w);
+    });
+    var sr = document.createElement('span'); sr.className = 'sr'; sr.textContent = txt;
+    h1.replaceChild(word, h1.lastChild);
+    h1.appendChild(sr);
+  }
+
+  /* Start the intro once the display and body fonts are in (the head script starts it after 2.2s regardless) */
+  var started = false;
+  function go() { if (started) return; started = true; requestAnimationFrame(function () { root.classList.add('go'); }); }
+  try {
+    Promise.race([
+      Promise.all([document.fonts.load('400 1em Unbounded'), document.fonts.load('400 1em "Be Vietnam Pro"')]),
+      new Promise(function (r) { setTimeout(r, 1500); })
+    ]).then(go, go);
+  } catch (e) { go(); }
+
+  /* Tape bands: repeat each group so the loop never shows a gap */
+  [].forEach.call(document.querySelectorAll('.ticker'), function (t) {
+    [].forEach.call(t.querySelectorAll('.tk-track'), function (tr) {
+      var g = tr.firstElementChild; if (!g) return;
+      for (var i = 0; i < 3; i++) { var c = g.cloneNode(true); tr.appendChild(c); }
+    });
+    t.classList.add('tk-ready');
+  });
+
+  /* Prints rest at slightly different angles, like paper on a desk */
+  var rots = [-1, 0.8, -0.6, 1, -0.9, 0.5];
+  [].forEach.call(document.querySelectorAll('.print'), function (p, i) {
+    p.style.setProperty('--rot0', rots[i % rots.length] + 'deg');
+    if (!fine) return;
+    p.addEventListener('pointermove', function (e) {
+      var r = p.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      p.style.setProperty('--ry', (x * 7).toFixed(2) + 'deg');
+      p.style.setProperty('--rx', (-y * 7).toFixed(2) + 'deg');
+    });
+    p.addEventListener('pointerleave', function () { p.style.removeProperty('--ry'); p.style.removeProperty('--rx'); });
+  });
+
+  /* Scroll reveal */
+  var io = null;
+  if ('IntersectionObserver' in window) {
+    var targets = [];
+    var add = function (el, d) { if (!el) return; el.classList.add('reveal'); el.style.setProperty('--d', d + 'ms'); targets.push(el); };
+    [].forEach.call(document.querySelectorAll('.sec-head'), function (h) { [].forEach.call(h.children, function (c, i) { add(c, i * 90); }); });
+    [].forEach.call(document.querySelectorAll('.about-copy > *'), function (c, i) { add(c, i * 90); });
+    add(document.querySelector('.polaroids'), 120);
+    [].forEach.call(document.querySelectorAll('.fact'), function (f) { add(f, 0); });
+    [].forEach.call(document.querySelectorAll('.emp-head .logo'), function (l) { add(l, 0); });
+    [].forEach.call(document.querySelectorAll('.emp-info'), function (e) { add(e, 160); });
+    [].forEach.call(document.querySelectorAll('.project'), function (p) {
+      var pt = p.querySelector('.p-text');
+      if (pt) [].forEach.call(pt.children, function (c, i) { add(c, i * 70); });
+      [].forEach.call(p.querySelectorAll('.p-figs > .print, .insights > .stats, .insights > .print'), function (f, i) { add(f, 160 + i * 140); });
+    });
+    add(document.querySelector('.contact .portrait'), 0);
+    [].forEach.call(document.querySelectorAll('.contact-copy > *'), function (c, i) { add(c, 120 + i * 90); });
+
+    io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+        if (e.target.classList.contains('stats')) count(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    targets.forEach(function (t) { io.observe(t); });
+
+    /* Picking a folder replays the reveal for the projects that stay */
+    [].forEach.call(document.querySelectorAll('[data-filter]'), function (t) {
+      t.addEventListener('click', function () {
+        requestAnimationFrame(function () {
+          var els = [].slice.call(document.querySelectorAll('#work .project:not([hidden]) .reveal'));
+          els.forEach(function (el) { io.unobserve(el); el.style.transition = 'none'; el.classList.remove('in'); });
+          void document.body.offsetWidth;
+          els.forEach(function (el) { el.style.transition = ''; });
+          requestAnimationFrame(function () { els.forEach(function (el) { io.observe(el); }); });
+        });
+      });
+    });
+  }
+
+  /* Stat counters: count up to the figures already on the page */
+  function parse(s) {
+    var m = /^([+\-]?)(\d+(?:\.\d+)?)(.*)$/.exec(s.trim());
+    return m ? { p: m[1], v: parseFloat(m[2]), d: (m[2].split('.')[1] || '').length, s: m[3], full: s.trim() } : null;
+  }
+  function count(stats) {
+    if (stats.dataset.done) return;
+    stats.dataset.done = '1';
+    var items = [];
+    [].forEach.call(stats.querySelectorAll('dd'), function (dd) {
+      var t = dd.firstChild;
+      if (t && t.nodeType === 3) { var o = parse(t.textContent); if (o) { o.n = t; items.push(o); } }
+      var dl = dd.querySelector('.delta');
+      if (dl && dl.firstChild) { var o2 = parse(dl.textContent); if (o2) { o2.n = dl.firstChild; items.push(o2); } }
+    });
+    var t0 = performance.now(), dur = 1500;
+    (function tick(now) {
+      var k = Math.min(1, (now - t0) / dur), e = ease(k);
+      items.forEach(function (o) { o.n.textContent = k >= 1 ? o.full : o.p + (o.v * e).toFixed(o.d) + o.s; });
+      if (k < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  /* Progress strip and bow parallax */
+  var bar = document.querySelector('.progress i');
+  var bows = [].slice.call(document.querySelectorAll('.hero .bow, .contact .bow'));
+  var speeds = bows.map(function (b) { return b.classList.contains('bow-l') ? -0.07 : 0.09; });
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    var y = window.pageYOffset, h = document.documentElement.scrollHeight - window.innerHeight;
+    if (bar) bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0).toFixed(4) + ')';
+    bows.forEach(function (b, i) {
+      var r = b.parentElement.getBoundingClientRect();
+      var c = r.top + r.height / 2 - window.innerHeight / 2;
+      b.style.translate = '0 ' + (-c * speeds[i]).toFixed(1) + 'px';
+    });
+  }
+  function req() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', req, { passive: true });
+  window.addEventListener('resize', req);
+  frame();
+
+  /* Cursor ring */
+  if (fine) {
+    var cur = document.querySelector('.cursor');
+    if (cur) {
+      root.classList.add('cur');
+      var tx = -100, ty = -100, cx = -100, cy = -100, run = false, shown = false;
+      var loop = function () {
+        cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
+        cur.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0)';
+        if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) requestAnimationFrame(loop); else run = false;
+      };
+      window.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') return;
+        tx = e.clientX; ty = e.clientY;
+        if (!shown) { shown = true; cx = tx; cy = ty; cur.classList.add('on'); }
+        if (!run) { run = true; requestAnimationFrame(loop); }
+      }, { passive: true });
+      document.addEventListener('pointerover', function (e) {
+        var t = e.target && e.target.closest ? e.target.closest('a, button, .print') : null;
+        cur.classList.toggle('hot', !!t);
+      });
+      root.addEventListener('mouseleave', function () { cur.classList.remove('on'); shown = false; });
+    }
+  }
+})();
+</script>
+</body></html>
